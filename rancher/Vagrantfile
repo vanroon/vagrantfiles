@@ -1,0 +1,30 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+	
+	config.vm.box = "hashicorp/precise32"
+	config.vm.provider :aws do |aws, override|
+
+		aws.access_key_id = ENV['AWS_KEY']
+
+		aws.secret_access_key = ENV['AWS_SECRET']
+		aws.keypair_name = ENV['AWS_KEYNAME']
+		aws.ami = "ami-fe408091"
+		aws.region = "eu-central-1"
+		aws.instance_type = "t2.micro"
+		aws.security_groups = "Wide Open"
+
+		override.vm.box = "dummy"
+		override.ssh.username = "ubuntu"
+		override.ssh.private_key_path = ENV['AWS_KEYPATH']
+	end
+	config.vm.provision "ansible" do |ansible|
+		ansible.verbose = "vvvv"
+		ansible.playbook = "initProvision.yml"
+		ansible.inventory_path = "hosts"
+		ansible.limit = "all" #added this line to fix "--limit is not specified error
+	end
+
+end
+
