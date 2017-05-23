@@ -53,6 +53,6 @@
   - copy:
       src: /home/evroon/DevOps/dockerfiles/acceptance/id_rsa.pub
       dest: /home/ubuntu/id_rsa.pub
-#  - name: build Docker image from Dockerfile
+  - name: rancher server gogogo
 #    raw: docker build -t="evroon/acc01" /home/ubuntu/
-#    raw: sudo docker run -ti -p 8888:8080 evroon/tomcat_base sh bin/catalina.sh run
+    raw: sudo docker run -ti -p 8080:8080 rancher/server

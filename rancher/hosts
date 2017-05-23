@@ -1,2 +1,2 @@
 [rancher]
-aws_server ansible_ssh_host=ec2-35-157-71-161.eu-central-1.compute.amazonaws.com ansible_ssh_port=22
+aws_server ansible_ssh_host=ec2-35-157-166-149.eu-central-1.compute.amazonaws.com ansible_ssh_port=22
